@@ -46,7 +46,7 @@ def _field(issue: Any, *names: str) -> Any:
 
 
 class LocaleLintScorer:
-    """Adapter for llm-locale-lint. Expects `llm_locale_lint.lint(text, locale=...)` returning issues."""
+    """Adapter for llm-locale-lint. Uses `llm_locale_lint.lint(text, locale=...)`, which returns Issue objects with `rule_id`."""
 
     name = "llm-locale-lint"
 
@@ -60,7 +60,7 @@ class LocaleLintScorer:
 
     def score(self, task: dict, answer: str) -> list[dict]:
         issues = list(self._lint(answer, locale=task["lang"]))
-        rules = [str(_field(i, "rule", "code", "id") or "issue") for i in issues]
+        rules = [str(_field(i, "rule_id", "rule", "code", "id") or "issue") for i in issues]
         detail = f"{len(issues)} issue(s)" + (f": {', '.join(sorted(set(rules)))}" if rules else "")
         ok: bool | None = (not issues) if self.strict else None
         return [{"scorer": self.name, "type": "lint", "ok": ok, "detail": detail, "issues": len(issues)}]
