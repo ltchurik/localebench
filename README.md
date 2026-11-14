@@ -1,5 +1,7 @@
 # localebench
 
+[![localebench: benchmark of locale conventions and formal register in LLM output](.github/social-preview.png)](https://github.com/ltchurik/localebench)
+
 **Do LLMs write like a native?** A benchmark of locale conventions and formal register in model *output* across European languages.
 
 [![ci](https://github.com/ltchurik/localebench/actions/workflows/ci.yml/badge.svg)](https://github.com/ltchurik/localebench/actions/workflows/ci.yml)
