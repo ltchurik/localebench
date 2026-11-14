@@ -11,7 +11,7 @@ license = "MIT"
 license-files = ["LICENSE"]
 requires-python = ">=3.10"
 authors = [{ name = "Ľubomír Tchurik" }]
-keywords = ["llm", "benchmark", "localization", "multilingual", "evaluation", "i18n"]
+keywords = ["llm", "benchmark", "localization", "multilingual", "evaluation", "i18n", "llm-evaluation", "cldr", "european-languages", "leaderboard"]
 classifiers = [
   "Programming Language :: Python :: 3",
   "License :: OSI Approved :: MIT License",
