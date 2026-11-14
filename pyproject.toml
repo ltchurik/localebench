@@ -1,0 +1,44 @@
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
+
+[project]
+name = "localebench"
+version = "0.1.0"
+description = "Do LLMs write like a native? Benchmark of locale conventions and formal register in model output across European languages."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.10"
+authors = [{ name = "Ľubomír Tchurik" }]
+keywords = ["llm", "benchmark", "localization", "multilingual", "evaluation", "i18n"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "Topic :: Software Development :: Localization",
+]
+dependencies = []
+
+[project.optional-dependencies]
+lint = ["llm-locale-lint @ git+https://github.com/ltchurik/llm-locale-lint"]
+dev = ["pytest>=8"]
+
+[project.urls]
+Homepage = "https://github.com/ltchurik/localebench"
+Author = "https://lubomirtchurik.sk"
+
+[project.scripts]
+localebench = "localebench.cli:main"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/localebench"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"tasks" = "localebench/tasks"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
